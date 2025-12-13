@@ -9,6 +9,9 @@ coverage
 # production
 build
 dist
+output
+package-lock.json
+simulator
 
 # misc
 .DS_Store
