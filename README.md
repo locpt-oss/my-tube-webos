@@ -1,7 +1,7 @@
 This project was bootstrapped with [@enact/cli](https://github.com/enactjs/cli).
 
 Below you will find some information on how to perform common tasks.
-You can find the most recent version of this guide [here](https://github.com/enactjs/templates/blob/master/packages/webostv/template/README.md).
+You can find the most recent version of this guide [here](https://github.com/enactjs/templates/blob/master/packages/typescript/template/README.md).
 Additional documentation on @enact/cli can be found [here](https://github.com/enactjs/cli/blob/master/docs/index.md).
 
 ## Folder Structure
@@ -14,24 +14,27 @@ my-app/
   .gitignore
   node_modules/
   package.json
+  tsconfig.json
   src/
     App/
-      App.js
+      App.tsx
       App.less
       package.json
     components/
     views/
-      MainPanel.js
-    index.js
-    reportWebVitals.js
+      MainPanel.tsx
+    index.tsx
+    reportWebVitals.ts
   resources/
-  webos-meta/
+  types/
+    react-app-env.d.ts
 ```
 
 For the project to build, **these files must exist with exact filenames**:
 
 * `package.json` is the core package manifest for the project
-* `src/index.js` is the JavaScript entry point.
+* `tsconfig.json` typescript configuration object
+* `src/index.tsx` is the TypeScript entry point.
 
 You can delete or rename the other files.
 
@@ -63,11 +66,11 @@ Deletes previous build fragments from ./dist.
 
 ### `npm run lint`
 
-Runs the Enact configuration of Eslint on the project for syntax analysis.
+Runs syntax analysis on JavaScript files using the Enact configuration of Eslint and on TypeScript files using ESLint.
 
 ### `npm run test` and `npm run test-watch`
 
-These tasks will execute all valid tests (files that end in `-specs.js`) that are within the project directory. The `test` is a standard single execution pass, while `test-watch` will set up a watcher to re-execute tests when files change.
+These tasks will execute all valid tests (files that end in `-specs.(js|js|ts|tsx)`) that are within the project directory. The `test` is a standard single execution pass, while `test-watch` will set up a watcher to re-execute tests when files change.
 
 ## Enact Build Options
 
@@ -156,12 +159,18 @@ While you can still use `require()` and `module.exports`, we encourage you to us
 
 For example:
 
-### `Button.js`
+### `Button.tsx`
 
 ```js
 import kind from '@enact/core/kind';
 
-const Button = kind({
+interface ButtonProps = {
+  color?: string
+};
+
+// kind() accepts a interface representing the props the component accepts
+// You can include support for native DOM attributes as well with a union
+const Button = kind<ButtonProps | HTMLButtonElement>({
   render() {
     // ...
   }
@@ -170,7 +179,7 @@ const Button = kind({
 export default Button; // Don’t forget to use export default!
 ```
 
-### `DangerButton.js`
+### `DangerButton.tsx`
 
 
 ```js
@@ -210,11 +219,11 @@ This project setup uses [Webpack](https://webpack.github.io/) for handling all a
 }
 ```
 
-### `Button.js`
+### `Button.tsx`
 
 ```js
 import kind from '@enact/core/kind';
-import styles './Button.css'; // Tell Webpack that Button.js uses these styles
+import styles './Button.css'; // Tell Webpack that Button.tsx uses these styles
 
 const Button = kind({
   render() {

@@ -1,4 +1,3 @@
-/* global ENACT_PACK_ISOMORPHIC */
 import {createRoot, hydrateRoot} from 'react-dom/client';
 
 import App from './App';
@@ -8,10 +7,13 @@ const appElement = (<App />);
 
 // In a browser environment, render instead of exporting
 if (typeof window !== 'undefined') {
+	const container = document.getElementById('root')!;
+
+	// @ts-ignore
 	if (ENACT_PACK_ISOMORPHIC) {
-		hydrateRoot(document.getElementById('root'), appElement);
+		hydrateRoot(container, appElement);
 	} else {
-		createRoot(document.getElementById('root')).render(appElement);
+		createRoot(container).render(appElement);
 	}
 }
 
