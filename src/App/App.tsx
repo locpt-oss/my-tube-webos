@@ -1,26 +1,21 @@
-import kind from '@enact/core/kind';
-import Panels from '@enact/sandstone/Panels';
-import ThemeDecorator from '@enact/sandstone/ThemeDecorator';
+import kind from "@enact/core/kind";
+import Panels from "@enact/sandstone/Panels";
+import ThemeDecorator from "@enact/sandstone/ThemeDecorator";
 
-import MainPanel from '../views/MainPanel';
+import MainPanel from "../views/MainPanel";
 
-import css from './App.module.less';
+// import styles from "./App.module.scss";
 
 const App = kind({
-	name: 'App',
+  name: "App",
 
-	styles: {
-		css,
-		className: 'app'
-	},
-
-	render: (props) => (
-		<div {...props}>
-			<Panels>
-				<MainPanel />
-			</Panels>
-		</div>
-	)
+  render: (props) => (
+    <div {...props}>
+      <Panels>
+        <MainPanel />
+      </Panels>
+    </div>
+  ),
 });
 
 export default ThemeDecorator(App);

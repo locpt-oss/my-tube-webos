@@ -14,7 +14,7 @@
     "license": "enact license",
     "test": "enact test",
     "test-watch": "enact test --watch",
-    "deploy-simulator": "npm run pack && ares-launch dist -s 25 -sp \".\\simulator\\webOS_TV_25_Simulator_1.4.3\""
+    "simulator": "npm run pack && ares-launch dist -s 25 -sp \".\\simulator\\webOS_TV_25_Simulator_1.4.3\""
   },
   "license": "UNLICENSED",
   "private": true,
