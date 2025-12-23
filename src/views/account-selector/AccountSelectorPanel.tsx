@@ -3,11 +3,15 @@ import { Panel, Header } from "@enact/sandstone/Panels";
 import Image from "@enact/sandstone/Image";
 import BodyText from "@enact/sandstone/BodyText";
 import Button from "@enact/sandstone/Button";
+import Spottable from "@enact/spotlight/Spottable";
 import styles from "./styles.module.scss";
 
 type AccountSelectorProps = {
   [key: string]: any;
 };
+
+//Tạo một div có khả năng Focus (Spottable)
+const AccountDiv = Spottable("div") as React.ComponentType<any>;
 
 const AccountSelector: React.FC<AccountSelectorProps> = (props) => {
   return (
@@ -16,8 +20,8 @@ const AccountSelector: React.FC<AccountSelectorProps> = (props) => {
 
       <div className={styles.container}>
         <div className={styles.accountList}>
-          {/* Profile giả lập 1 */}
-          <div className={styles.accountWrapper} tabIndex={0}>
+          {/* Profile 1 */}
+          <AccountDiv className={styles.accountWrapper}>
             <div className={styles.avatarCircle}>
               <Image
                 src="https://api.dicebear.com/7.x/avataaars/svg?seed=Felix"
@@ -25,10 +29,10 @@ const AccountSelector: React.FC<AccountSelectorProps> = (props) => {
               />
             </div>
             <BodyText className={styles.accountName}>User 01</BodyText>
-          </div>
+          </AccountDiv>
 
-          {/* Profile giả lập 2 */}
-          <div className={styles.accountWrapper} tabIndex={0}>
+          {/* Profile 2 */}
+          <AccountDiv className={styles.accountWrapper}>
             <div className={styles.avatarCircle}>
               <Image
                 src="https://api.dicebear.com/7.x/avataaars/svg?seed=Aneka"
@@ -36,18 +40,19 @@ const AccountSelector: React.FC<AccountSelectorProps> = (props) => {
               />
             </div>
             <BodyText className={styles.accountName}>User 02</BodyText>
-          </div>
+          </AccountDiv>
 
           {/* Nút Thêm tài khoản (+) */}
-          <div className={styles.accountWrapper} tabIndex={0}>
+          <AccountDiv className={styles.accountWrapper}>
             <div className={`${styles.avatarCircle} ${styles.addCircle}`}>
               <span className={styles.plusSign}>+</span>
             </div>
             <BodyText className={styles.accountName}>Thêm tài khoản</BodyText>
-          </div>
+          </AccountDiv>
         </div>
 
         <div className={styles.footer}>
+          {/* Button của Enact đã có sẵn Spottable nên không cần sửa */}
           <Button size="small">Xem với tư cách khách</Button>
         </div>
       </div>
